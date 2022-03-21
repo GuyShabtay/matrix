@@ -64,7 +64,7 @@ def elementaryMatrix(matrix,size):
     for i in range(size):
         elementary = identityMatrix(size)
         if matrix[i][i]!=1:
-            elementary[i][i]=int(1/matrix[i][i])
+            elementary[i][i]=1/matrix[i][i]
             print(elementary)
             matrix = multi(elementary, matrix, size)
             print(matrix)
@@ -101,6 +101,22 @@ def multi(m1,m2,size):
     result=zeroMat
     return result
 
+def sort(matrix,size):
+    for col in range(size):
+            row=col
+            pivot,max=col,col
+            for j in range(size-col-1):
+                row+=1
+                if matrix[row][col]>matrix[pivot][pivot]:
+                    max=row
+            if max!=pivot:
+                temp=matrix[pivot]
+                matrix[pivot]=matrix[max]
+                matrix[max]=temp
+    print(matrix)
+
+
+
 
 
 
@@ -119,13 +135,13 @@ mat3 = [[0, 2, -1],
         [3, -2, 1],
         [3, 2, -1]]
 
-mat4 = [[0, 2, -1],
-        [3, -2, 1],
-        [3, 2, 1]]
-
+mat4 = [[1,1,1],
+        [1,2,5],
+        [2,5,-1]]
 
 
 det(mat2)
+sort(mat2,3)
 elementaryMatrix(mat2,3)
 #multi([[1, 0, 0], [-2, 1, 0], [0, 0, 1]],[[1, -1, -2], [2, -3, -5], [-1, 3, 5]],3)
 #print(multiMatrix([[1, 0, 0], [-2, 1, 0], [0, 0, 1]],[[1, -1, -2], [2, -3, -5], [-1, 3, 5]]))
